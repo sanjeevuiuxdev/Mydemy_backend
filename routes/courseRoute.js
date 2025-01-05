@@ -1,0 +1,20 @@
+const express = require("express")
+const { createCourse, getAllCourse, getSingleCourse, updateSingleCourse, createLeature, getCourseLeatures, getSingleCourseLeatureData, updateCourseLeature, deleteCourseLeature, publishedCourse, getEnrollerdCourse, updateCompleteCourse, getCompletedLecture } = require("../controllers/courseController")
+const upload = require("../utils/multer")
+const router = express.Router()
+
+router.post("/create",upload.single('courseThumbnail'),createCourse)
+router.get("/all/course",getAllCourse)
+router.get("/getsinglecourse/:id",getSingleCourse)
+router.put("/updatecourse/:id",upload.single('courseThumbnail'),updateSingleCourse)
+router.post("/:id/leature",upload.single('videoUrl'),createLeature)
+router.get("/:id/leature/get",getCourseLeatures)
+router.get("/:courseId/leature/:leatureId/get",getSingleCourseLeatureData)
+router.put("/:courseId/leature/:leatureId/updateleature",upload.single('videoUrl'),updateCourseLeature)
+router.delete("/:courseId/leature/:leatureId/delete",deleteCourseLeature)
+router.get("/all/published/course",publishedCourse)
+router.post("/enrollerdcourse",getEnrollerdCourse)
+router.post("/update-completed",updateCompleteCourse)
+router.post('/get-completed',getCompletedLecture)
+
+module.exports = router
