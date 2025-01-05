@@ -1,5 +1,5 @@
 const userModel = require("../models/userModel")
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 var JWT = require('jsonwebtoken');
 const { generateToken } = require("../utils/generateToken");
 const { deleteMediaFromCloudinary, uploadMedia } = require("../utils/cloudinary");
